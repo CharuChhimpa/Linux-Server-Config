@@ -51,7 +51,7 @@ Restart ssh service.
 
 ```sudo service ssh restart```
 
-* Next Configure UFW with
+* Next Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
 ```
 sudo ufw allow 2200
 sudo ufw allow 80
@@ -77,6 +77,27 @@ and add the following line
 ```
 grader ALL=(ALL) NOPASSWD:ALL
 ```
+
+* Create an SSH key pair for grader using the ssh-keygen tool.
+
+Repeat steps in Step 1 (similar to root) to create a new ssh key at `~/.ssh/sports_grader`.
+Run the following commands next 
+
+```
+su - grader
+mkdir .ssh
+chmod 700 .ssh
+nano .ssh/authorized_keys
+# paste the content of sports_grader.pub file and save the file
+chmod 644 .ssh/authorized_keys
+```
+Restart service and try logging in with grader
+```
+sudo service ssh restart
+ssh -p 2200 -i ~/.ssh/sports_grader grader@139.59.77.21
+```
+
+
 
 
 
