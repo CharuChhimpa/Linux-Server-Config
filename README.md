@@ -41,6 +41,48 @@ sudo apt-get install unattended-upgrades
 sudo unattended-upgrades
 ```
 
+* Next, To change ssh port to 2200
+```
+sudo nano /etc/ssh/sshd_config
+```
+change the port no from 20 to 2200
+
+Restart ssh service.
+
+```sudo service ssh restart```
+
+* Next Configure UFW with
+```
+sudo ufw allow 2200
+sudo ufw allow 80
+sudo ufw allow 123
+sudo ufw enable
+```
+* To create a user called grader
+```
+sudo adduser grader
+```
+Enter the user information for grader
+![Imgur](https://i.imgur.com/Xjs2P2U.png)
+
+* To give grader permission create grader file inside sudoers.d.
+```
+touch /etc/sudoers.d/grader
+```
+Next open 
+```
+sudo nano /etc/sudoers.d/grader
+```
+and add the following line
+```
+grader ALL=(ALL) NOPASSWD:ALL
+```
+
+
+
+
+ 
+
 
 
 
