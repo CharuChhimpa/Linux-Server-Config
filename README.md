@@ -23,5 +23,25 @@ Next, Add the key by copying the contents of sports_root.pub .
 Finish on create button, you have set up your droplet !!.
 ![Imgur](https://i.imgur.com/QItROcm.png)
 
+* ssh into the server with command.
+```
+ssh -i ~/.ssh/sports_root root@139.59.77.21
+```
+Here `139.59.77.21` is my IP.
+
+Enter the passphrase for the ssh key that you created, for me it was "hello".
+![Imgur](https://i.imgur.com/4XhuqRf.png)
+
+To update the packages run
+
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install unattended-upgrades
+sudo unattended-upgrades
+```
+
+
+
 
 
