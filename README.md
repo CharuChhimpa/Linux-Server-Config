@@ -34,7 +34,9 @@ Here `139.59.77.21` is my IP.
 Enter the passphrase for the ssh key that you created, for me it was "hello".
 ![Imgur](https://i.imgur.com/4XhuqRf.png)
 
-To update the packages run
+##  Update the packages
+
+* To update the packages run
 
 ```
 sudo apt-get update
@@ -46,9 +48,9 @@ sudo unattended-upgrades
 ```
 sudo nano /etc/ssh/sshd_config
 ```
-change the port no from 20 to 2200
+* Change the port no from 20 to 2200
 
-Restart ssh service.
+* Restart ssh service.
 
 ```sudo service ssh restart```
 
@@ -79,7 +81,7 @@ and add the following line
 grader ALL=(ALL) NOPASSWD:ALL
 ```
 
-* Create an SSH key pair for grader using the ssh-keygen tool.
+## Create an SSH key pair for grader using the ssh-keygen tool.
 
 Repeat steps in Step 1 (similar to root) to create a new ssh key at `~/.ssh/sports_grader`.
 Run the following commands next 
@@ -92,7 +94,7 @@ nano .ssh/authorized_keys
 # paste the content of sports_grader.pub file and save the file
 chmod 644 .ssh/authorized_keys
 ```
-Restart service and try logging in with grader
+* Restart service and try logging in with grader
 ```
 sudo service ssh restart
 ssh -p 2200 -i ~/.ssh/sports_grader grader@139.59.77.21
@@ -100,7 +102,7 @@ ssh -p 2200 -i ~/.ssh/sports_grader grader@139.59.77.21
 
 ![Imgur](https://i.imgur.com/ypcdH2f.png)
 
-Congfigure timezone 
+## Congfigure timezone 
 ```
 sudo dpkg-reconfigure tzdata
 ```
@@ -114,7 +116,7 @@ sudo apt-get install python3
 sudo apt-get install python3-setuptools
 sudo apt-get install apache2 libapache2-mod-wsgi-py3
 ```
-Restart the service 
+* Restart the service 
 
 ```
 sudo service apache2 restart
@@ -124,13 +126,13 @@ sudo service apache2 restart
 sudo apt-get install postgresql
 ```
 
-disable remote connections remove other IPs besides 127.0.0.1
+* Disable remote connections remove other IPs besides 127.0.0.1
 ```
 sudo nano /etc/postgresql/VERSION_NUMBER/main/pg_hba.conf
 ```
 VERSION_NUMBER here was 9.5
 
-create a databse 
+## Create a databse 
 
 ```
 create user catalog with password 'hello';
@@ -144,7 +146,7 @@ press `\q` to exit and install git
 sudo apt-get install git
 ```
 
- Clone and setup the Item Catalog project  Next move to directory using
+ ## Clone and setup the Item Catalog project  Next move to directory using
 ```
 cd /var/www
 sudo mkdir catalog
@@ -166,7 +168,7 @@ sudo pip3 install psycopg2==2.7.1
 sudo pip3 install oauth2client
 ```
 
-* create a configuration file for your project.
+## Create a configuration file for your project.
 ```
 sudo nano /etc/apache2/sites-available/catalog.conf
 ```
@@ -207,11 +209,11 @@ sudo cat /var/log/apache2/error.log
 
 * Since google oauth dosen't works with only IP. Setup subdomain and link your ip to it.
 
-* Change configs in google OAuth 2.0
+## Change configs in google OAuth 2.0
 
 configure your OAuth 2.0 credential and update authorized origin and redirect URIs with your subdomain
 
-* Disbale password based authentication and Root login
+##  Disbale password based authentication and Root login
 In config file
 ```
 sudo nano /etc/ssh/sshd_config
