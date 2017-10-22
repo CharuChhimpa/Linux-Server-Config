@@ -204,6 +204,26 @@ This will make your app working on your ip check (http://139.59.77.21/) error in
 sudo cat /var/log/apache2/error.log
 ```
 
+* Since google oauth dosen't works with only IP. Setup subdomain and link your ip to it.
+
+* Change configs in google OAuth 2.0
+
+configure your OAuth 2.0 credential and update authorized origin and redirect URIs with your subdomain
+
+* Disbale password based authentication and Root login
+In config file
+```
+sudo nano /etc/ssh/sshd_config
+```
+Change
+```
+PermitRootLogin no 
+PasswordAuthentication no
+```
+Save it and restart ssh service
+```
+sudo service ssh restart
+```
 
 
 
