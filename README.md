@@ -143,14 +143,69 @@ press `\q` to exit and install git
 sudo apt-get install git
 ```
 
-Next move to directory using
+ Clone and setup the Item Catalog project  Next move to directory using
 ```
 cd /var/www
+sudo mkdir catalog
+cd catalog
+sudo git clone https://github.com/saurabhjn76/ItemCatalog
+```
+Install pip and the project dependencies
+```
+sudo apt-get install python-pip
+```
+Project requirements 
+```
+sudo pip3 install Flask==0.12.2
+sudo pip3 install SQLAlchemy==1.1.11
+sudo pip3 install Flask-SQLAlchemy==2.2
+sudo pip3 install Flask-Login==0.4.0
+sudo pip3 install equests-oauthlib==0.8.0
+sudo pip3 install psycopg2==2.7.1
+sudo pip3 install oauth2client
 ```
 
+* create a configuration file for your project.
 ```
-sudo mkdir catalog
+sudo nano /etc/apache2/sites-available/catalog.conf
 ```
+Add the following code and save the file
+```
+<VirtualHost *:80>
+    ServerName 139.59.77.21
+
+    WSGIScriptAlias / /var/www/catalog/wsgi.py
+
+    <Directory /var/www/catalog>
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+```
+
+* Add a wsgi file in catalog folder
+```
+import sys
+
+sys.path.insert(0, '/var/www/catalog/ItemCatalog')
+
+from ItemCatalog import app as application
+
+application.secret_key = 'New secret key.'
+```
+
+* Enable the site and restart apache service
+```
+sudo a2ensite catalog  # enable site
+sudo service apache2 reload
+```
+This will make your app working on your ip check (http://139.59.77.21/) error in logs if any.
+```
+sudo cat /var/log/apache2/error.log
+```
+
+
+
 
 
 
