@@ -5,7 +5,7 @@
 This project is linked to the Configuring Linux Web Servers, which teaches  to secure and set up a Linux server. 
 In this Project we will deploy the Flask Postgres Apache server.
 
-### 1. Let's Start with Ubuntu Linux server instance on Digital Ocean.
+### Let's Start with Ubuntu Linux server instance on Digital Ocean.
 * Create a new Droplet on Digital Ocean with following config.
 ![Imgur](https://i.imgur.com/KNHH7Gh.png)
 ##### Distribution - Ubuntu 16.04 x64
@@ -228,7 +228,9 @@ Save it and restart ssh service
 sudo service ssh restart
 ```
 
-
+## Third Party Resources
+* https://www.digitalocean.com/community/tutorials/how-to-use-ssh-keys-with-digitalocean-droplets
+* http://flask.pocoo.org/docs/0.12/deploying/mod_wsgi/
 
 
 
