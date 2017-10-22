@@ -97,6 +97,62 @@ sudo service ssh restart
 ssh -p 2200 -i ~/.ssh/sports_grader grader@139.59.77.21
 ```
 
+![Imgur](https://i.imgur.com/ypcdH2f.png)
+
+Congfigure timezone 
+```
+sudo dpkg-reconfigure tzdata
+```
+
+![Imgur](https://i.imgur.com/iMta7iz.png)
+
+
+* Install and configure Apache to serve a Python mod_wsgi application.
+```
+sudo apt-get install python3
+sudo apt-get install python3-setuptools
+sudo apt-get install apache2 libapache2-mod-wsgi-py3
+```
+Restart the service 
+
+```
+sudo service apache2 restart
+```
+* Install the POSTGRES
+```
+sudo apt-get install postgresql
+```
+
+disable remote connections remove other IPs besides 127.0.0.1
+```
+sudo nano /etc/postgresql/VERSION_NUMBER/main/pg_hba.conf
+```
+VERSION_NUMBER here was 9.5
+
+create a databse 
+
+```
+create user catalog with password 'hello';
+create database catalog with owner catalog;
+```
+![Imgur](https://i.imgur.com/mGpgo2u.png)
+
+press `\q` to exit and install git
+
+```
+sudo apt-get install git
+```
+
+Next move to directory using
+```
+cd /var/www
+```
+
+```
+sudo mkdir catalog
+```
+
+
 
 
 
